@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAMEER - Portfolio</title>
+    <style>
+        /* Basic Resets & Global Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif; /* Consider a Google Font for a more professional touch, e.g., 'Poppins', 'Roboto' */
+            background-color: #1a1a2e; /* Dark background similar to example */
+            color: #e0e0e0; /* Light text color for readability */
+            line-height: 1.6;
+            scroll-behavior: smooth; /* Smooth scrolling for internal links */
+        }
+
+        .container {
+            max-width: 900px; /* Limits content width for better readability */
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #e0e0e0; /* Heading color */
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #6a05ad; /* Purple line under main headings */
+            text-transform: uppercase; /* Makes headings stand out professionally */
+            letter-spacing: 1px;
+        }
+
+        a {
+            color: #8c52ff; /* Link color */
+            text-decoration: none;
+            transition: color 0.3s ease; /* Smooth transition for link hovers */
+        }
+
+        a:hover {
+            color: #6a05ad; /* Darker purple on hover */
+            text-decoration: underline;
+        }
+
+        .card {
+            background-color: #2e0050; /* Darker purple for cards */
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+        }
+
+        .card:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #8c52ff; /* Button primary color */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            margin-right: 10px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .btn:hover {
+            background-color: #6a05ad; /* Darker button hover */
+            transform: translateY(-2px); /* Slight lift on hover */
+            text-decoration: none;
+        }
+
+        /* Header Section Specific Styles */
+        .header-section {
+            background-color: #2e0050; /* Matches card background */
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Shadow for header */
+        }
+
+        .profile-initials {
+            width: 100px;
+            height: 100px;
+            background-color: #8c52ff; /* Purple circle */
+            border: 3px solid #6a05ad; /* Border for initials circle */
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            color: white;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 0 15px rgba(140, 82, 255, 0.5); /* Glowing effect */
+        }
+
+        .profile-header h1 {
+            font-size: 2.8em;
+            margin-bottom: 5px;
+        }
+
+        .tagline {
+            font-size: 1.3em;
+            color: #b0b0b0;
+            margin-top: -10px;
+            font-weight: 300; /* Lighter font weight for tagline */
+        }
+
+        .summary {
+            max-width: 700px;
+            margin: 20px auto;
+            font-size: 1em;
+            color: #c0c0c0;
+        }
+
+        .social-links a {
+            font-size: 1.2em;
+            margin: 0 15px;
+            color: #8c52ff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: rgba(140, 82, 255, 0.1); /* Subtle background on hover */
+            text-decoration: none;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            padding: 40px 0;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        /* Projects Section */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid for projects */
+            gap: 25px;
+        }
+
+        .project-card h3 {
+            color: #8c52ff;
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+
+        .project-card .technologies {
+            font-size: 0.9em;
+            color: #b0b0b0;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .project-links {
+            margin-top: 15px;
+            display: flex; /* Aligns buttons */
+            flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
+        }
+
+        /* Skills Section */
+        .skills-category {
+            background-color: #2e0050; /* Same as other cards */
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .skills-category h3 {
+            color: #8c52ff;
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+            border-bottom: 1px dashed rgba(140, 82, 255, 0.3); /* Subtle line under skill categories */
+            padding-bottom: 5px;
+        }
+
+        /* Contact Section */
+        .contact-details p {
+            margin: 5px 0;
+            font-size: 1.1em;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #111122;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9em;
+            color: #a0a0a0;
+            border-top: 1px solid #2e0050; /* Subtle top border */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h2 {
+                font-size: 1.8em;
+                margin-bottom: 30px;
+            }
+            .profile-header h1 {
+                font-size: 2.2em;
+            }
+            .tagline {
+                font-size: 1.1em;
+            }
+            .project-grid {
+                grid-template-columns: 1fr; /* Stack projects on small screens */
+            }
+            .btn {
+                width: 100%; /* Full width buttons on small screens */
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-initials {
+                width: 80px;
+                height: 80px;
+                font-size: 2em;
+            }
+            .header-section {
+                padding: 40px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-section">
+        <div class="container">
+            <div class="profile-header">
+                <div class="profile-initials">SK</div> <h1>SAMEER</h1>
+                <p class="tagline">Enthusiastic Information Science Student | Aspiring Machine Learning Engineer</p>
+                <p class="summary">Enthusiastic Information Science student with a robust understanding of programming, data management, and software engineering. Skilled in Python and Java, with proven problem-solving capabilities and a keen eye for optimizing systems. Effective both as an independent worker and a team player.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/sameer501" target="_blank">LinkedIn</a>
+                    <a href="mailto:sameergyd0501@gmail.com">Email</a>
+                    </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+
+            <section class="section education-section">
+                <h2>Education</h2>
+                <div class="card">
+                    <h3>Visvesvaraya Technological University (VTU)</h3>
+                    <p>B.E in Information Science and Engineering</p>
+                    <p class="date">2022-2026</p>
+                </div>
+                <div class="card">
+                    <h3>Nagarjuna PU College</h3>
+                    <p>State (Class XII), Aggregate: 84%</p>
+                    <p class="date">2020-2022</p>
+                </div>
+                <div class="card">
+                    <h3>Jnana Bhodhini High school</h3>
+                    <p>State (Class X), Aggregate: 88%</p>
+                    <p class="date">2019-2020</p>
+                </div>
+            </section>
+
+            <section class="section certifications-section">
+                <h2>Certifications</h2>
+                <div class="card">
+                    <h3>WEB APPLICATION DEVELOPMENT</h3>
+                    <p>Ethnotech Academic solution</p>
+                </div>
+                <div class="card">
+                    <h3>JAVA PROGRAMMING</h3>
+                    <p>Ethnotech Academic solution</p>
+                </div>
+                <div class="card">
+                    <h3>DATA SCIENCE USING PYTHON</h3>
+                    <p>Ethnotech Academic solution</p>
+                </div>
+            </section>
+
+            <section class="section projects-section">
+                <h2>Projects</h2>
+                <div class="project-grid">
+                    <div class="card project-card">
+                        <h3>DISEASE PREDICTION USING MACHINE LEARNING</h3>
+                        <p>Built a model for predicting the type of disease with the help of python. We built a user-friendly interface with HTML and CSS. The random forest, decision tree algorithm gave the good accuracy to my model.</p>
+                        <p class="technologies"><strong>Technologies:</strong> Python, HTML, CSS, Random Forest, Decision Tree</p>
+                        <div class="project-links">
+                            <a href="#" target="_blank" class="btn">Live Demo</a> <a href="#" target="_blank" class="btn">GitHub Repo</a> </div>
+                    </div>
+                    <div class="card project-card">
+                        <h3>RICE TYPE CLASSIFICATION USING MACHINE LEARNING</h3>
+                        <p>Built a model for predicting the type of rice with the help of Django framework and python. We built a user-friendly interface with HTML and CSS. The random forest algorithm gave the good accuracy to my model.</p>
+                        <p class="technologies"><strong>Technologies:</strong> Django, Python, HTML, CSS, Random Forest</p>
+                        <div class="project-links">
+                            <a href="#" target="_blank" class="btn">Live Demo</a> <a href="#" target="_blank" class="btn">GitHub Repo</a> </div>
+                    </div>
+                    <div class="card project-card">
+                        <h3>COMPREHENSIVE NETWORK SCANNIG TOOL USING N-MAP</h3>
+                        <p>(**Please add your description for this project here**)</p>
+                        <p class="technologies"><strong>Technologies:</strong> (**Please list technologies used here, e.g., N-Map, Python**)</p>
+                        <div class="project-links">
+                            <a href="#" target="_blank" class="btn">Live Demo</a> <a href="#" target="_blank" class="btn">GitHub Repo</a> </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section skills-section">
+                <h2>Technical Skills</h2>
+                <div class="skills-category">
+                    <h3>Languages</h3>
+                    <p>Python, HTML, CSS</p>
+                </div>
+                <div class="skills-category">
+                    <h3>Tools</h3>
+                    <p>VS Code, MS Excel, Django</p>
+                </div>
+                <div class="skills-category">
+                    <h3>Libraries</h3>
+                    <p>scikit-learn, pandas, NumPy, Matplotlib</p>
+                </div>
+                <div class="skills-category">
+                    <h3>Soft Skills</h3>
+                    <p>Communication, Teamwork, Problem-solving, Leadership</p>
+                </div>
+            </section>
+
+            <section class="section contact-section">
+                <h2>Contact Me</h2>
+                <p>Feel free to reach out to me via email or phone.</p>
+                <div class="contact-details">
+                    <p><strong>Email:</strong> <a href="mailto:sameergyd0501@gmail.com">sameergyd0501@gmail.com</a></p>
+                    <p><strong>Phone:</strong> +91 9448880501</p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 SAMEER. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
